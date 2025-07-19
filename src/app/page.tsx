@@ -7,10 +7,14 @@ import { Hero } from '@/app/components/Hero';
 import { About } from '@/app/components/About';
 import { Services } from '@/app/components/Services';
 import { ContactForm } from '@/app/components/ContactForm';
-import { LandscapingServices } from '@/app/components/Services/LandscapingServices';
+import { LandscapingServices } from '@/app/components/Services/Landscaping/LandscapingServices';
+import { SodService } from '@/app/components/Services/Landscaping/Sod';
+import {MaintenanceService} from "@/app/components/Services/Landscaping/Maintenance";
+import {GardenDesignService} from "@/app/components/Services/Landscaping/GardenDesign";
 import { JunkServices } from '@/app/components/Services/JunkServices';
 import { SnowServices } from '@/app/components/Services/SnowServices';
 import { Sidebar } from '@/app/components/Sidebar';
+
 
 export default function Page() {
     const router = useRouter();
@@ -43,6 +47,12 @@ export default function Page() {
                 return <Services setPage={handlePageChange} />; // Pass setPage to handle nested service navigation
             case 'services/landscaping':
                 return <LandscapingServices />;
+            case 'services/landscaping/sod':
+                return <SodService />;
+            case 'services/landscaping/maintenance':
+                return <MaintenanceService />;
+            case 'services/landscaping/garden-design':
+                return <GardenDesignService />;
             case 'services/junk':
                 return <JunkServices />;
             case 'services/snow':

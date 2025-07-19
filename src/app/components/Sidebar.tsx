@@ -7,6 +7,7 @@ import { Button } from 'react-bootstrap';
 export function Sidebar({ setPage }: { setPage: (page: string) => void }) {
     const [collapsed, setCollapsed] = useState(false);
     const [servicesOpen, setServicesOpen] = useState(false);
+    const [landscapingOpen, setLandscapingOpen] = useState(false);
 
     return (
         <div
@@ -52,9 +53,39 @@ export function Sidebar({ setPage }: { setPage: (page: string) => void }) {
 
                     {servicesOpen && !collapsed && (
                         <div className="ms-3">
-                            <button onClick={() => setPage('services/landscaping')} className="nav-link btn btn-link text-start">
-                                🌱 Landscaping
+                            <button
+                                onClick={() => {
+                                    setPage('services/landscaping');
+                                    setLandscapingOpen(!landscapingOpen);
+                                }}
+                                className="nav-link btn btn-link text-start"
+                            >
+                                {landscapingOpen ? '▼ Landscaping' : '▶ Landscaping'}
                             </button>
+
+                            {landscapingOpen && (
+                                <div className="ms-3">
+                                    <button
+                                        onClick={() => setPage('services/landscaping/sod')}
+                                        className="nav-link btn btn-link text-start"
+                                    >
+                                        🌱 Sod Installation
+                                    </button>
+                                    <button
+                                        onClick={() => setPage('services/landscaping/garden-design')}
+                                        className="nav-link btn btn-link text-start"
+                                    >
+                                        🌸 Garden Design
+                                    </button>
+                                    <button
+                                        onClick={() => setPage('services/landscaping/maintenance')}
+                                        className="nav-link btn btn-link text-start"
+                                    >
+                                        🧱 Maintenance
+                                    </button>
+                                </div>
+                            )}
+
                             <button onClick={() => setPage('services/junk')} className="nav-link btn btn-link text-start">
                                 🗑️ Junk Removal
                             </button>
