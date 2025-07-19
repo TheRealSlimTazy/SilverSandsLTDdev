@@ -2,16 +2,17 @@
 
 import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button } from 'react-bootstrap'; // Optional, you can also use plain buttons
+import { Button } from 'react-bootstrap';
 
 export function Sidebar({ setPage }: { setPage: (page: string) => void }) {
     const [collapsed, setCollapsed] = useState(false);
+    const [servicesOpen, setServicesOpen] = useState(false);
 
     return (
         <div
-            className={`bg-light border-end p-3 d-flex flex-column justify-between`}
+            className="bg-light border-end p-3 d-flex flex-column justify-between"
             style={{
-                width: collapsed ? '60px' : '200px',
+                width: collapsed ? '60px' : '220px',
                 minHeight: '100vh',
                 transition: 'width 0.3s ease',
                 position: 'relative'
@@ -34,12 +35,35 @@ export function Sidebar({ setPage }: { setPage: (page: string) => void }) {
                     <button onClick={() => setPage('home')} className="nav-link btn btn-link text-start">
                         {collapsed ? '🏠' : 'Home'}
                     </button>
+
                     <button onClick={() => setPage('about')} className="nav-link btn btn-link text-start">
                         {collapsed ? 'ℹ️' : 'About'}
                     </button>
-                    <button onClick={() => setPage('services')} className="nav-link btn btn-link text-start">
-                        {collapsed ? '🛠️' : 'Services'}
+
+                    <button
+                        onClick={() => {
+                            setPage('services');
+                            setServicesOpen(!servicesOpen);
+                        }}
+                        className="nav-link btn btn-link text-start"
+                    >
+                        {collapsed ? '🛠️' : servicesOpen ? '▼ Services' : '▶ Services'}
                     </button>
+
+                    {servicesOpen && !collapsed && (
+                        <div className="ms-3">
+                            <button onClick={() => setPage('services/landscaping')} className="nav-link btn btn-link text-start">
+                                🌱 Landscaping
+                            </button>
+                            <button onClick={() => setPage('services/junk')} className="nav-link btn btn-link text-start">
+                                🗑️ Junk Removal
+                            </button>
+                            <button onClick={() => setPage('services/snow')} className="nav-link btn btn-link text-start">
+                                ❄️ Snow Removal
+                            </button>
+                        </div>
+                    )}
+
                     <button onClick={() => setPage('contact')} className="nav-link btn btn-link text-start">
                         {collapsed ? '✉️' : 'Contact'}
                     </button>
