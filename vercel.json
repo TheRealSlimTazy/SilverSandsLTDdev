@@ -1,0 +1,8 @@
+{
+  "rewrites": [],
+  "routes": [],
+  "output": "export",
+  "experimental": {
+    "forceDynamic": true
+  }
+}
