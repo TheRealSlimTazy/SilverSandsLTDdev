@@ -1,4 +1,5 @@
 'use client';
+export const dynamic = 'force-dynamic';
 
 import { useState } from 'react';
 import { Tab, Nav, Image, Row, Col } from 'react-bootstrap';

@@ -2,9 +2,8 @@
 const nextConfig = {
     reactStrictMode: true,
     experimental: {
-        serverActions: true // optional if you're using forms later
-    },
-    dynamic: 'force-dynamic'
+        serverActions: true // ✅ Correct usage
+    }
 };
 
 module.exports = nextConfig;
